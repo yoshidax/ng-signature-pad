@@ -17,7 +17,9 @@
       function ($window, $timeout) {
         return {
           scope: {
-            ngSignaturePad: '='
+            ngSignaturePad: '=',
+            ngSignaturePadOnBegin: '&',
+            ngSignaturePadOnEnd: '&'
           },
           link: function ($scope, $element, $attrs) {
             $timeout(function () {
@@ -47,12 +49,12 @@
                 $attrs.$set('ngSignaturePadVelocityFilterWeight', null);
               }
 
-              if (!$attrs.ngSignaturePadOnBegin) {
-                $attrs.$set('ngSignaturePadOnBegin', null);
+              if (!$scope.ngSignaturePadOnBegin) {
+                $scope.ngSignaturePadOnBegin = null;
               }
 
-              if (!$attrs.ngSignaturePadOnEnd) {
-                $attrs.$set('ngSignaturePadOnEnd', null);
+              if (!$scope.ngSignaturePadOnEnd) {
+                $scope.ngSignaturePadOnEnd = null;
               }
 
               $scope.ngSignaturePad = new $window.SignaturePad($element[0], {
@@ -61,8 +63,8 @@
                 backgroundColor: $attrs.ngSignaturePadBackgroundColor,
                 penColor: $attrs.ngSignaturePadPenColor,
                 velocityFilterWeight: $attrs.ngSignaturePadVelocityFilterWeight,
-                onBegin: $attrs.ngSignaturePadOnBegin,
-                onEnd: $attrs.ngSignaturePadOnEnd
+                onBegin: $scope.ngSignaturePadOnBegin,
+                onEnd: $scope.ngSignaturePadOnEnd
               });
 
               var oldAddPoint = $scope.ngSignaturePad._addPoint;
