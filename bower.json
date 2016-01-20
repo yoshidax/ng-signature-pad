@@ -19,6 +19,6 @@
   ],
   "dependencies": {
     "angular": "~1.4.0",
-    "signature_pad": "~1.5.1"
+    "signature_pad": "https://github.com/szimek/signature_pad.git#00743fc"
   }
 }
